@@ -4322,6 +4322,8 @@ module.exports = (function() {
 }());
 
 },{}],45:[function(require,module,exports){
+
+
 /*
 
 style-attr
@@ -4334,25 +4336,21 @@ Very simple parsing and stringifying of style attributes.
 
 Convert a style attribute string to an object.
 
-- input: string (eg. anything you might see in a style attribute)
-- return: object
-
 */
-function parse (raw) {
-  var trim = function (s) { return s.trim(); };
+function parse(raw) {
+  var trim = function (s) {
+    return s.trim();
+  };
   var obj = {};
 
-  getKeyValueChunks(raw)
-    .map(trim)
-    .filter(Boolean)
-    .forEach(function (item) {
-      // split with `.indexOf` rather than `.split` because the value may also contain colons.
-      var pos = item.indexOf(':');
-      var key = item.substr(0, pos).trim();
-      var val = item.substr(pos + 1).trim();
+  getKeyValueChunks(raw).map(trim).filter(Boolean).forEach(function (item) {
+    // split with `.indexOf` rather than `.split` because the value may also contain colons.
+    var pos = item.indexOf(':');
+    var key = item.substr(0, pos).trim();
+    var val = item.substr(pos + 1).trim();
 
-      obj[key] = val;
-    });
+    obj[key] = val;
+  });
 
   return obj;
 }
@@ -4364,11 +4362,8 @@ function parse (raw) {
 
 Split a string into chunks matching `<key>: <value>`
 
-- input: string
-- return: Array<string>
-
 */
-function getKeyValueChunks (raw) {
+function getKeyValueChunks(raw) {
   var chunks = [];
   var offset = 0;
   var sep = ';';
@@ -4377,7 +4372,9 @@ function getKeyValueChunks (raw) {
   var nextSplit;
   while (offset < raw.length) {
     nextSplit = raw.indexOf(sep, offset);
-    if (nextSplit === -1) { nextSplit = raw.length; }
+    if (nextSplit === -1) {
+      nextSplit = raw.length;
+    }
 
     chunk += raw.substring(offset, nextSplit);
 
@@ -4403,16 +4400,11 @@ function getKeyValueChunks (raw) {
 
 Convert an object into an attribute string
 
-- input: object
-- return: string
-
 */
-function stringify (obj) {
-  return Object.keys(obj)
-    .map(function (key) {
-      return key + ':' + obj[key];
-    })
-    .join(';');
+function stringify(obj) {
+  return Object.keys(obj).map(function (key) {
+    return key + ':' + obj[key];
+  }).join(';');
 }
 
 /*
@@ -4422,18 +4414,14 @@ function stringify (obj) {
 
 Normalize an attribute string (eg. collapse duplicates)
 
-- input: string
-- return: string
-
 */
-function normalize (str) {
+function normalize(str) {
   return stringify(parse(str));
 }
 
 module.exports.parse = parse;
 module.exports.stringify = stringify;
 module.exports.normalize = normalize;
-
 },{}],46:[function(require,module,exports){
 // File:src/Three.js
 
@@ -54930,7 +54918,7 @@ module.exports = WebVRPolyfill;
 },{}],53:[function(require,module,exports){
 module.exports={
   "name": "aframe-core",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/aframevr/aframe-core",
   "license": "MIT",
   "main": "src/index.js",
@@ -55014,11 +55002,11 @@ module.exports={
     "node": ">= 0.12.7",
     "npm": ">= 2.12.1"
   },
-  "gitHead": "ab4cfa073bbf8b6e8befbc819364620f6fff97e6",
+  "gitHead": "b951d8d5de537fa75443587bff979a7fd9427b6b",
   "description": "> `aframe-core` has merged into [aframe dev branch](https://github.com/aframevr/aframe/tree/dev) and all development has moved to the [aframe repo](https://github.com/aframevr/aframe). This repository will be removed later.",
-  "_id": "aframe-core@0.1.5",
-  "_shasum": "2873c2423acdb0b6ed803441ff041b12cbf8c600",
-  "_from": "aframe-core@>=0.1.5 <0.2.0",
+  "_id": "aframe-core@0.1.6",
+  "_shasum": "fcb04280ee32b62f276013c9238022ac933f8546",
+  "_from": "aframe-core@>=0.1.6 <0.2.0",
   "_npmVersion": "2.11.2",
   "_nodeVersion": "0.12.6",
   "_npmUser": {
@@ -55026,8 +55014,8 @@ module.exports={
     "email": "me@ngokevin.com"
   },
   "dist": {
-    "shasum": "2873c2423acdb0b6ed803441ff041b12cbf8c600",
-    "tarball": "http://registry.npmjs.org/aframe-core/-/aframe-core-0.1.5.tgz"
+    "shasum": "fcb04280ee32b62f276013c9238022ac933f8546",
+    "tarball": "http://registry.npmjs.org/aframe-core/-/aframe-core-0.1.6.tgz"
   },
   "maintainers": [
     {
@@ -55052,12 +55040,11 @@ module.exports={
     }
   ],
   "_npmOperationalInternal": {
-    "host": "packages-6-west.internal.npmjs.com",
-    "tmp": "tmp/aframe-core-0.1.5.tgz_1455840302405_0.611032378859818"
+    "host": "packages-13-west.internal.npmjs.com",
+    "tmp": "tmp/aframe-core-0.1.6.tgz_1457747622022_0.8922319989651442"
   },
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/aframe-core/-/aframe-core-0.1.5.tgz",
-  "readme": "ERROR: No README data found!"
+  "_resolved": "https://registry.npmjs.org/aframe-core/-/aframe-core-0.1.6.tgz"
 }
 
 },{}],54:[function(require,module,exports){
@@ -55884,23 +55871,16 @@ module.exports.Component = registerComponent('look-controls', {
     };
   })(),
 
-  updatePosition: (function () {
-    var position = new THREE.Vector3();
-    var quaternion = new THREE.Quaternion();
-    var scale = new THREE.Vector3();
-    return function () {
-      var el = this.el;
-      var deltaPosition = this.calculateDeltaPosition();
-      var currentPosition = el.getComputedAttribute('position');
-      this.el.object3D.matrixWorld.decompose(position, quaternion, scale);
-      deltaPosition.applyQuaternion(quaternion);
-      el.setAttribute('position', {
-        x: currentPosition.x + deltaPosition.x,
-        y: currentPosition.y + deltaPosition.y,
-        z: currentPosition.z + deltaPosition.z
-      });
-    };
-  })(),
+  updatePosition: function () {
+    var el = this.el;
+    var deltaPosition = this.calculateDeltaPosition();
+    var currentPosition = el.getComputedAttribute('position');
+    el.setAttribute('position', {
+      x: currentPosition.x + deltaPosition.x,
+      y: currentPosition.y + deltaPosition.y,
+      z: currentPosition.z + deltaPosition.z
+    });
+  },
 
   calculateDeltaPosition: function () {
     var dolly = this.dolly;
@@ -60246,7 +60226,7 @@ module.exports={
     "uglifyjs": "^2.4.10"
   },
   "dependencies": {
-    "aframe-core": "^0.1.5",
+    "aframe-core": "^0.1.6",
     "browserify": "^11.0.1",
     "browserify-css": "^0.8.2",
     "polymerize": "^1.0.0"
