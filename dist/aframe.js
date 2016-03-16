@@ -60198,7 +60198,7 @@ module.exports={
     "uglifyjs": "^2.4.10"
   },
   "dependencies": {
-    "aframe-core": "cvan/aframe-core#b390c46",
+    "aframe-core": "cvan/aframe-core#5f73654",
     "browserify": "^11.0.1",
     "browserify-css": "^0.8.2",
     "polymerize": "^1.0.0"
