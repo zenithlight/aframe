@@ -53455,14 +53455,14 @@ module.exports={
     "node": ">= 0.12.7",
     "npm": ">= 2.12.1"
   },
-  "gitHead": "b390c469d9a71242968236af47a5faec125b0b41",
+  "gitHead": "5f736545b4921921ba14940850f9fe4ce916a89f",
   "readme": "# A-Frame Core has moved\n\n> `aframe-core` has merged into [aframe dev branch](https://github.com/aframevr/aframe/tree/dev) and all development has moved to the [aframe repo](https://github.com/aframevr/aframe). This repository will be removed later.\n\n",
   "readmeFilename": "README.md",
   "description": "> `aframe-core` has merged into [aframe dev branch](https://github.com/aframevr/aframe/tree/dev) and all development has moved to the [aframe repo](https://github.com/aframevr/aframe). This repository will be removed later.",
   "_id": "aframe-core@0.1.6",
-  "_shasum": "a133b911024454a655e30ce3b1de6ebf32708434",
-  "_from": "cvan/aframe-core#b390c46",
-  "_resolved": "git://github.com/cvan/aframe-core.git#b390c469d9a71242968236af47a5faec125b0b41"
+  "_shasum": "fdb3d275acc48255ac4404f26242b030157b8ace",
+  "_from": "cvan/aframe-core#5f73654",
+  "_resolved": "git://github.com/cvan/aframe-core.git#5f736545b4921921ba14940850f9fe4ce916a89f"
 }
 
 },{}],43:[function(require,module,exports){
@@ -57591,7 +57591,7 @@ function injectMetaTags () {
     meta = document.createElement('meta');
     meta.name = 'viewport';
     meta.content =
-      'width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no';
+      'width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1';
     headEl.appendChild(meta);
   }
 
