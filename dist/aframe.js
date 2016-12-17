@@ -56821,7 +56821,7 @@ module.exports={
   "main": "dist/aframe.js",
   "scripts": {
     "browserify": "browserify src/index.js -s 'AFRAME' -p browserify-derequire",
-    "build": "mkdirp build/ && npm run browserify -- --debug -t [envify --INSPECTOR_VERSION dev] -o dist/aframe.min.js",
+    "build": "mkdirp build/ && npm run browserify -- --debug -t [envify --INSPECTOR_VERSION dev] -o build/aframe.js",
     "codecov": "codecov",
     "dev": "npm run build && cross-env INSPECTOR_VERSION=dev node ./scripts/budo -t envify",
     "dist": "npm run dist:min && npm run dist:max",
@@ -56834,7 +56834,7 @@ module.exports={
     "ghpages": "ghpages -p gh-pages/",
     "lint": "semistandard -v | snazzy",
     "precommit": "npm run lint",
-    "preghpages": "npm run dist && rimraf gh-pages && mkdirp gh-pages && cp -r {.nojekyll,dist,lib,examples,index.html,style} gh-pages/. 2>/dev/null || : && git checkout dist/ && replace 'dist/aframe.min.js' 'dist/aframe.min.js' gh-pages/ -r --silent",
+    "preghpages": "npm run dist && rimraf gh-pages && mkdirp gh-pages && cp -r {.nojekyll,dist,lib,examples,index.html,style} gh-pages/. 2>/dev/null || : && git checkout dist/ && replace 'build/aframe.js' 'dist/aframe.min.js' gh-pages/ -r --silent",
     "release:bump": "npm run dist && git commit -am 'bump dist' && npm version patch --preminor",
     "release:push": "npm login && npm publish && git push --follow-tags",
     "start": "npm run dev",
