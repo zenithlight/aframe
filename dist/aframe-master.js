@@ -66537,7 +66537,7 @@ module.exports={
     "test:chrome": "npm test -- --browsers Chrome",
     "test:node": "mocha --ui tdd tests/node"
   },
-  "repository": "aframevr/aframe",
+  "repository": "zenithlight/aframe",
   "license": "MIT",
   "dependencies": {
     "browserify-css": "^0.8.2",
@@ -74918,8 +74918,8 @@ function getCanvasSize (canvasEl, embedded) {
   canvasEl.width = canvasEl.parentElement.offsetWidth;
 
   return {
-    height: window.innerHeight,
-    width: window.innerWidth
+    height: canvasEl.offsetHeight,
+    width: canvasEl.offsetWidth
   };
 }
 
@@ -76479,7 +76479,7 @@ _dereq_('./core/a-mixin');
 _dereq_('./extras/components/');
 _dereq_('./extras/primitives/');
 
-console.log('A-Frame Version: 0.5.0 (Date 30-03-2017, Commit #bc38ec4)');
+console.log('A-Frame Version: 0.5.0 (Date 30-03-2017, Commit #03313e6)');
 console.log('three Version:', pkg.dependencies['three']);
 console.log('WebVR Polyfill Version:', pkg.dependencies['webvr-polyfill']);
 
