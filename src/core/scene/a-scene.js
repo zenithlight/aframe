@@ -494,10 +494,10 @@ function getCanvasSize (canvasEl, embedded) {
       width: canvasEl.parentElement.offsetWidth
     };
   }
-           
+
   canvasEl.height = canvasEl.parentElement.offsetHeight;
   canvasEl.width = canvasEl.parentElement.offsetWidth;
-           
+
   return {
     height: window.innerHeight,
     width: window.innerWidth
